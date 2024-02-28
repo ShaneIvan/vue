@@ -1,30 +1,26 @@
-<script setup> //Composition API
+ <script setup> //Composition API
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import {ref, computed, 
+import {ref, computed
 } from 'vue';
 
-defineProps = {
-   meterInputValue : m,
- gramInputValue : g,
- celciusInputValue : C
+const meterInputValue = ref(0);
+const gramInputValue = ref(0);
+const celciusInputValue = ref(0);
 
-}
-
- 
-// const showAlert = (message, icon = 'success') =>{
-//     Swal.fire({
-//       title: 'Metric Converter',
-//       text: message,
-//       icon: icon,
-//       confirmButtonText: 'OK',
-//     })
-//   }
-//   const convert = () => { 
-//     if (!this.meterInputValue && !this.gramInputValue && !this.celciusInputValue && !this.secondsInputValue) 
-//       this.showAlert('Please enter a value for conversion.', 'error');
-//       return;
-//     }
+const showAlert = (message, icon = 'success') =>{
+    Swal.fire({
+      title: 'Metric Converter',
+      text: message,
+      icon: icon,
+      confirmButtonText: 'OK',
+    })
+  }
+  const convert = () => { 
+    if (!this.meterInputValue && !this.gramInputValue && !this.celciusInputValue && !this.secondsInputValue) 
+      this.showAlert('Please enter a value for conversion.', 'error');
+      return;
+    }
 
 //m to ft formula
 const feetConvertedValue = computed(() => meterInputValue.value *3.28084);
